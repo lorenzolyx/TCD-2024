@@ -1,20 +1,28 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Products } from '../products/products.entity';
+import { ProductsFraming } from '../products-framing/products-framing.entity';
+import { ProductsType } from '../products-type/products-type.entity';
 
-@Entity('products_order')
+@Entity('order')
 export class ProductsOrder {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @Column({ type: 'date' })
+  orderDate: Date;
 
-    @Column({ length: 60, nullable: false })
-    name: string;
+  @Column()
+  quantity: number;
 
-    @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
-    price: number;
+  @ManyToOne(() => ProductsFraming, (productsFraming) => productsFraming.id)
+  @JoinColumn({ name: 'products_framing_id' })
+  productsFraming: ProductsFraming;
 
-    @Column({ type: 'int', nullable: false })
-    quantity: number;
+  @ManyToOne(() => Products, (products) => products.id)
+  @JoinColumn({ name: 'products_id' })
+  products: Products;
 
-    @Column({ nullable: true })
-    image: string;
+  @ManyToOne(() => ProductsType, (productsType) => productsType.id)
+  @JoinColumn({ name: 'products_type_id' })
+  productsType: ProductsType;
 }

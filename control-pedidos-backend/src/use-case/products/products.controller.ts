@@ -1,4 +1,4 @@
-import { ProductsType } from './product.entity';
+import { Products } from './products.entity';
 import {
   Body,
   Controller,
@@ -12,19 +12,19 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ProductsTypeService } from './product.service';
+import { ProductsService } from './products.service';
 
 @Controller('/products-type')  
-export class ProductsTypeController {
-  constructor(private service: ProductsTypeService) {}  
+export class ProductsController {
+  constructor(private service: ProductsService) {}  
 
   @Get()
-  findAll(): Promise<ProductsType[]> {
+  findAll(): Promise<Products[]> {
     return this.service.findAll(); 
   }
 
   @Get(':id')
-  async findById(@Param('id', ParseUUIDPipe) id: string): Promise<ProductsType> { 
+  async findById(@Param('id', ParseUUIDPipe) id: string): Promise<Products> { 
     const found = await this.service.findById(id);
 
     if (!found)
@@ -34,15 +34,15 @@ export class ProductsTypeController {
   }
 
   @Post()
-  create(@Body() product: ProductsType): Promise<ProductsType> {  
+  create(@Body() product: Products): Promise<Products> {  
     return this.service.save(product);  
   }
 
   @Put(':id')
   async update(
     @Param('id', ParseUUIDPipe) id: string,
-    @Body() product: ProductsType, 
-  ): Promise<ProductsType> {  
+    @Body() product: Products, 
+  ): Promise<Products> {  
     const found = await this.service.findById(id);
 
     if (!found)

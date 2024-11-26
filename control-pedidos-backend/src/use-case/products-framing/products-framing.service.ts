@@ -15,7 +15,8 @@ export class ProductsFramingService {
   }
 
   findById(id: string): Promise<ProductsFraming> {
-    return this.repository.findOneBy({ id: id });
+    return this.repository.findOneBy({ id: Number(id) });
+
   }
 
   save(product: ProductsFraming): Promise<ProductsFraming> {

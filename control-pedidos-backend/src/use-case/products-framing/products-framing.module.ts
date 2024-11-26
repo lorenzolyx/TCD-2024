@@ -10,4 +10,4 @@ import { ProductsFramingController } from "./products-framing.controller";
     controllers: [ProductsFramingController],
     providers: [ProductsFramingService],
 })
-export class ProductFramingModule {}
+export class ProductsFramingModule {}

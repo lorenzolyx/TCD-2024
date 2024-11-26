@@ -4,17 +4,9 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class ProductsFraming {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string;
-
-    @Column({ length: 60, nullable: false })
+    id: number;
+    
+    @Column({ length: 15, nullable: false })
     name: string;
 
-    @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
-    price: number;
-
-    @Column({ type: 'int', nullable: false })
-    quantity: number;
-
-    @Column({ nullable: true })
-    image: string;
 }

@@ -4,17 +4,8 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class ProductsType {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id: number;
 
-    @Column({ length: 60, nullable: false })
+    @Column({ length: 15, nullable: false })
     name: string;
-
-    @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
-    price: number;
-
-    @Column({ type: 'int', nullable: false })
-    quantity: number;
-
-    @Column({ nullable: true })
-    image: string;
 }

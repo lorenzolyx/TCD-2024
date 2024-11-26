@@ -15,7 +15,8 @@ export class ProductsTypeService {
   }
 
   findById(id: string): Promise<ProductsType> {
-    return this.repository.findOneBy({ id: id });
+    return this.repository.findOneBy({ id: Number(id) });
+
   }
 
   save(product: ProductsType): Promise<ProductsType> {
