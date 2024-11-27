@@ -14,7 +14,7 @@ import {
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 
-@Controller('/products-type')  
+@Controller('/products')  
 export class ProductsController {
   constructor(private service: ProductsService) {}  
 
@@ -46,7 +46,7 @@ export class ProductsController {
     const found = await this.service.findById(id);
 
     if (!found)
-      throw new HttpException('Product Type not found', HttpStatus.NOT_FOUND);
+      throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
 
     product.id = found.id;
 
@@ -59,7 +59,7 @@ export class ProductsController {
     const found = await this.service.findById(id);
 
     if (!found)
-      throw new HttpException('Product Type not found', HttpStatus.NOT_FOUND); 
+      throw new HttpException('Product not found', HttpStatus.NOT_FOUND); 
 
     return this.service.remove(id);
   }

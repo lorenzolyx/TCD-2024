@@ -14,43 +14,42 @@ import {
 } from '@nestjs/common';
 import { ProductsTypeService } from './products-type.service';
 
-@Controller('/products-type')  // Ajustado o nome da rota para ser mais semântico
+@Controller('/products-type') 
 export class ProductsTypeController {
-  constructor(private service: ProductsTypeService) {}  // Corrigido o construtor
-
+  constructor(private service: ProductsTypeService) {} 
   @Get()
   findAll(): Promise<ProductsType[]> {
-    return this.service.findAll();  // Corrigido a chamada do método
+    return this.service.findAll(); 
   }
 
   @Get(':id')
-  async findById(@Param('id', ParseUUIDPipe) id: string): Promise<ProductsType> {  // Alterado para usar ProductsType
+  async findById(@Param('id', ParseUUIDPipe) id: string): Promise<ProductsType> { 
     const found = await this.service.findById(id);
 
     if (!found)
-      throw new HttpException('Product Type not found', HttpStatus.NOT_FOUND);  // Alterada a mensagem de erro
+      throw new HttpException('Product Type not found', HttpStatus.NOT_FOUND);
 
     return found;
   }
 
   @Post()
-  create(@Body() product: ProductsType): Promise<ProductsType> {  // Alterado para usar ProductsType
-    return this.service.save(product);  // Corrigido para passar a instância de ProductsType
+  create(@Body() product: ProductsType): Promise<ProductsType> {  
+    return this.service.save(product);  
   }
 
   @Put(':id')
   async update(
     @Param('id', ParseUUIDPipe) id: string,
-    @Body() product: ProductsType,  // Alterado para usar ProductsType
-  ): Promise<ProductsType> {  // Alterado para usar ProductsType
+    @Body() product: ProductsType,  
+  ): Promise<ProductsType> {  
     const found = await this.service.findById(id);
 
     if (!found)
-      throw new HttpException('Product Type not found', HttpStatus.NOT_FOUND);  // Alterada a mensagem de erro
+      throw new HttpException('Product Type not found', HttpStatus.NOT_FOUND);  
 
     product.id = found.id;
 
-    return this.service.save(product);  // Corrigido para salvar a instância de ProductsType
+    return this.service.save(product);  
   }
 
   @Delete(':id')
@@ -59,7 +58,7 @@ export class ProductsTypeController {
     const found = await this.service.findById(id);
 
     if (!found)
-      throw new HttpException('Product Type not found', HttpStatus.NOT_FOUND);  // Alterada a mensagem de erro
+      throw new HttpException('Product Type not found', HttpStatus.NOT_FOUND); 
 
     return this.service.remove(id);
   }
