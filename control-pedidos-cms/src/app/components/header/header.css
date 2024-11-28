@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3b3b98;
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  .header__logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header__logo img {
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  .header__menu-item {
+    background-color: #ff4757;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
