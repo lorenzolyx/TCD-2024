@@ -1,0 +1,18 @@
+.settings {
+    padding: 2rem;
+  }
+  
+  .settings h1 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .settings-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .option label {
+    margin-right: 0.5rem;
+  }
+  
