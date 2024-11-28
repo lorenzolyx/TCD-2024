@@ -1,28 +1,35 @@
+/* Header.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #3b3b98;
-    color: white;
-    padding: 10px 20px;
-  }
-  
-  .header__logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .header__logo img {
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .header__menu-item {
-    background-color: #ff4757;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #003366;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.header__menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__menu-item {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.header__menu-item:hover {
+  background-color: #e60000;
+}

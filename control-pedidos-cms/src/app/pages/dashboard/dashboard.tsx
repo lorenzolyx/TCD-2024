@@ -5,7 +5,7 @@ import Card from '../../components/card/card';
 const Dashboard: React.FC = () => {
   return (
     <div className="dashboard">
-      <h1>Dashboard</h1>
+      <h1 className="dashboard__title">Dashboard</h1>
       <div className="cards-container">
         <Card title="Total de Pedidos" content={120} />
         <Card title="Produtos Disponíveis" content={45} />
