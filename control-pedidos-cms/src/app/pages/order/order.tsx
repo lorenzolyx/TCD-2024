@@ -1,8 +1,8 @@
 import React from 'react';
-import './Order.css';
+import './order.css';
 import Table from '../../components/table/table';
 
-const Orders: React.FC = () => {
+const Order: React.FC = () => {
   const headers = ['ID', 'Produto', 'Quantidade', 'Data', 'Status'];
   const data = [
     { ID: '1', Produto: 'Pão', Quantidade: 10, Data: '2024-11-28', Status: 'Entregue' },
@@ -10,11 +10,11 @@ const Orders: React.FC = () => {
   ];
 
   return (
-    <div className="orders">
+    <div className="products-framing">
       <h1>Pedidos</h1>
       <Table headers={headers} data={data} />
     </div>
   );
 };
 
-export default Orders;
+export default Order;

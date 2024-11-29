@@ -14,13 +14,13 @@ import {
 } from '@nestjs/common';
 import { ProductsFramingService } from './products-framing.service';
 
-@Controller('/products-framing') 
+@Controller('/products-framing')
 export class ProductsFramingController {
   constructor(private service: ProductsFramingService) {}
 
   @Get()
   findAll(): Promise<ProductsFraming[]> {
-    return this.service.findAll();  
+    return this.service.findAll();
   }
 
   @Get(':id')
@@ -28,14 +28,14 @@ export class ProductsFramingController {
     const found = await this.service.findById(id);
 
     if (!found)
-      throw new HttpException('Product not found', HttpStatus.NOT_FOUND);  
+      throw new HttpException('Product framing not found', HttpStatus.NOT_FOUND);
 
     return found;
   }
 
   @Post()
   create(@Body() product: ProductsFraming): Promise<ProductsFraming> {
-    return this.service.save(product); 
+    return this.service.save(product);
   }
 
   @Put(':id')
@@ -46,21 +46,34 @@ export class ProductsFramingController {
     const found = await this.service.findById(id);
 
     if (!found)
-      throw new HttpException('Product not found', HttpStatus.NOT_FOUND); 
+      throw new HttpException('Product framing not found', HttpStatus.NOT_FOUND);
 
     product.id = found.id;
 
-    return this.service.save(product); 
+    return this.service.save(product);
   }
 
   @Delete(':id')
   @HttpCode(204)
   async remove(@Param('id', ParseUUIDPipe) id: string): Promise<void> {
-    const found = await this.service.findById(id);
+    try {
+      const found = await this.service.findById(id);
 
-    if (!found)
-      throw new HttpException('Product not found', HttpStatus.NOT_FOUND); 
+      if (!found) {
+        throw new HttpException('Product framing not found', HttpStatus.NOT_FOUND);
+      }
 
-    return this.service.remove(id);
+      await this.service.remove(id);
+    } catch (error) {
+      console.error('Error deleting product framing:', error.message);
+
+      if (error.status === HttpStatus.NOT_FOUND) {
+        throw error;
+      }
+      throw new HttpException(
+        'An error occurred while deleting the product framing.',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
   }
 }

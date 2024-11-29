@@ -15,7 +15,7 @@ export class ProductsTypeService {
   }
 
   findById(id: string): Promise<ProductsType> {
-    return this.repository.findOneBy({ id: Number(id) });
+    return this.repository.findOneBy({ id: String(id) });
 
   }
 

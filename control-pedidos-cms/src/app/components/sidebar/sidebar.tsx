@@ -16,12 +16,6 @@ const Sidebar: React.FC = () => {
           <Link to="/products">Produtos</Link>
         </li>
         <li>
-          <Link to="/products-framing">Categoria dos produtos</Link>
-        </li>
-        <li>
-          <Link to="/products-type">Tipo dos produtos</Link>
-        </li>
-        <li>
           <Link to="/settings">Configurações</Link>
         </li>
       </ul>

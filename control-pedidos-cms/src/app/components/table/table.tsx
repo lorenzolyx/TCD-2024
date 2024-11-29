@@ -1,35 +1,24 @@
-export interface TableData {
-  ID: string;
-  Produto: string;
-  Quantidade: number;
-  Data: string;
-  Status: string;
-}
+import React from 'react';
+import './table.css';
 
 interface TableProps {
-  data: TableData[]; 
+  data: any[];
 }
 
 const Table: React.FC<TableProps> = ({ data }) => {
   return (
-    <table>
+    <table className="table">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Produto</th>
-          <th>Quantidade</th>
-          <th>Data</th>
-          <th>Status</th>
+          {data.length > 0 && Object.keys(data[0]).map((key) => <th key={key}>{key}</th>)}
         </tr>
       </thead>
       <tbody>
-        {data.map((item) => (
-          <tr key={item.ID}>
-            <td>{item.ID}</td>
-            <td>{item.Produto}</td>
-            <td>{item.Quantidade}</td>
-            <td>{item.Data}</td>
-            <td>{item.Status}</td>
+        {data.map((row, index) => (
+          <tr key={index}>
+            {Object.values(row).map((value, i) => (
+              <td key={i}>{value}</td>
+            ))}
           </tr>
         ))}
       </tbody>

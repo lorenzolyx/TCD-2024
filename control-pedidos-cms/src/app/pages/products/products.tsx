@@ -1,27 +1,26 @@
-import React from 'react';
-import './Products.css';
-import Button from '../../components/button/button';
+import React, { useEffect, useState } from 'react';
+import { getProducts } from '../../../services/products-service';
+import { Link } from 'react-router-dom';
 import Table from '../../components/table/table';
 
-
 const Products: React.FC = () => {
-  const headers = ['ID', 'Nome', 'Preço', 'Quantidade', 'Categoria'];
-  const data = [
-    { ID: '1', Nome: 'Pão', Preço: 'R$ 5,00', Quantidade: 50, Categoria: 'Padaria' },
-    { ID: '2', Nome: 'Refrigerante', Preço: 'R$ 8,00', Quantidade: 20, Categoria: 'Bebidas' },
-  ];
+  const [products, setProducts] = useState([]);
 
-  const handleAddProduct = () => {
-    console.log('Adicionar Produto');
-  };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await getProducts();
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
 
   return (
-    <div className="products">
-      <div className="products-header">
-        <h1>Produtos</h1>
-        <Button label="Adicionar Produto" onClick={handleAddProduct} />
-      </div>
-      <Table headers={headers} data={data} />
+    <div>
+      <h1>Produtos</h1>
+      <Table data={products} />
+      <Link to="/products/add">
+        <button>Adicionar Produto</button>
+      </Link>
     </div>
   );
 };

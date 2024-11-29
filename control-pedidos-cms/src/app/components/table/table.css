@@ -1,54 +1,15 @@
 .table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0; 
-  font-family: 'Roboto', sans-serif;
+  border-collapse: collapse;
 }
 
-.table th,
-.table td {
-  padding: 12px 15px;
+.table th, .table td {
   border: 1px solid #ddd;
-  text-align: left;
-  font-size: 1rem;
+  padding: 8px;
 }
 
 .table th {
-  background-color: #003366; 
+  background-color: #4caf50;
   color: white;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.table td {
-  background-color: #ffffff;
-  color: #333;
-  transition: background-color 0.3s ease;
-}
-
-.table tr:hover td {
-  background-color: #f9f9f9; 
-}
-
-.table th,
-.table td {
-  border-radius: 5px;
-}
-
-.table td:first-child {
-  font-weight: 600; 
-}
-
-.table td:last-child {
-  text-align: right; 
-}
-
-@media (max-width: 768px) {
-  .table {
-    font-size: 0.9rem;
-  }
-  .table th,
-  .table td {
-    padding: 8px;
-  }
+  text-align: left;
 }

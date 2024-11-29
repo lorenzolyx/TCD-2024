@@ -1,5 +1,5 @@
 import { InjectRepository } from "@nestjs/typeorm";
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { ProductsFraming } from "./products-framing.entity";
 import { Repository } from "typeorm";
 
@@ -24,6 +24,11 @@ export class ProductsFramingService {
   }
 
   async remove(id: string): Promise<void> {
-    await this.repository.delete(id);
+    const result = await this.repository.delete(id);
+  
+    if (result.affected === 0) {
+      throw new HttpException('Product framing not found', HttpStatus.NOT_FOUND);
+    }
   }
+  
 }
